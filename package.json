@@ -1,6 +1,6 @@
 {
   "name": "@evolvejs/evolava",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a lavalink client for evolvejs",
   "main": "dist/index.js",
   "scripts": {

@@ -1,15 +1,22 @@
 # EvoLava
-A simple Lavalink Client for EvolveJS
+- **A simple Lavalink Client for EvolveJS**
 
+# Setup
+
+- **First of all you need to have [NodeJS](https://nodejs.org) and [EvolveJS](https://github.com/EvolveJS/EvolveJS) installed...**
+
+- **Second you need to install [Java](https://www.java.com/en/download/) (Note - You should install Java 13 as Lavalink has some problems with Java 11 and 14)**
+
+- **Download and install the latest version of [Lavalink](https://ci.fredboat.com/viewLog.html?buildId=lastSuccessful&buildTypeId=Lavalink_Build&tab=artifacts&guest=1)**
 
 # Installation 
 
 ```shell
 npm i @evolvejs/evolava
 ```
-
-# Support
-- **[EvolveJS/EvoLava Support](https://discord.gg/yzMr9RJ)**
+# Basic Startup
+- **After you followed all the steps above, you can now initialize a new EvoLavaClient instance ONLY in Ready Event**
+- **Start the Lavalink CI server by the command java -jar Lavalink.jar in the directory where you installed lavalink, make sure to have a [application.yml](https://github.com/Frederikam/Lavalink/blob/master/LavalinkServer/application.yml.example)**
 
 # Usage
 ```js
@@ -52,7 +59,7 @@ client.on("newMessage", (msg) => {
         });
 
         let song = player.search("Rick Astley - Never Gonna Give you up", msg.member, options: {
-            souce: "yt",
+            source: "yt",
             add: false
         });
 
@@ -62,6 +69,9 @@ client.on("newMessage", (msg) => {
     }
 })
 ```
+# Support
+- **[EvolveJS/EvoLava Support](https://discord.gg/yzMr9RJ)**
+
 
 # Credits
 
