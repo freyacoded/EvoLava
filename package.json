@@ -1,0 +1,28 @@
+{
+  "name": "@evolvejs/evolava",
+  "version": "1.0.0",
+  "description": "a lavalink client for evolvejs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvolveJS/EvoLava.git"
+  },
+  "keywords": [
+    "lavalink",
+    "lavalink-client",
+    "evolvejs"
+  ],
+  "author": "evolvejs",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/EvolveJS/EvoLava/issues"
+  },
+  "homepage": "https://github.com/EvolveJS/EvoLava#readme",
+  "dependencies": {
+    "@evolvejs/evolvejs": "0.0.8-alpha",
+    "@evolvejs/objex": "^1.0.0"
+  }
+}
