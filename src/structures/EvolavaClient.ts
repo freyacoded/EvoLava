@@ -1,4 +1,4 @@
-import { EvolveClient, EvolveLogger, VoiceState, Payload } from "@evolvejs/evolvejs"
+import { EvolveClient, VoiceState, Payload } from "@evolvejs/evolvejs"
 import { EventEmitter } from "events";
 import { Objex } from "@evolvejs/objex";
 import { Nodes } from "src/interfaces/Nodes";
@@ -17,7 +17,7 @@ export class EvolavaClient extends EventEmitter {
         public node: Nodes[]) {
             super();
 
-        if(!this.node) EvolveLogger.error("No nodes provided!")
+        if(!this.node) client.logger.error("No nodes provided!")
         
         for(const n of this.node) {
             if(this.nodes.has(n.host)) return;
@@ -25,7 +25,8 @@ export class EvolavaClient extends EventEmitter {
             this.nodes.set(n.host, new EvoLavaNode(this, n))
         }
 
-        client.ws.voice.on("packetReady", (pk1: VoiceState, pk2) => this.handle(pk1, pk2))
+        const connection = client.shardConnections.get(0); 
+        connection?.gateway.voice.on("packetReady", (pk1: VoiceState, pk2: Payload) => this.handle(pk1, pk2))
     }
 
     public spawn(

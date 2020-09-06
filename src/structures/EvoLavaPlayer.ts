@@ -27,7 +27,7 @@ export class EvolavaPlayer {
 
     this.queue = new Queue(this, queueOption);
 
-    this.evolava.client.ws.sendVoiceStateUpdate(options.guild.id, options.voiceChannel.id, {
+    this.evolava.client.shardConnections.get(0)?.gateway.sendVoiceStateUpdate(options.guild.id, options.voiceChannel.id, {
         self_deaf: options.self!.deaf,
         self_mute: options.self!.mute
     });
@@ -45,7 +45,7 @@ export class EvolavaPlayer {
     if (!channel)
       throw new Error(`Player#movePlayer() No voice channel provided!`);
 
-    this.evolava.client.ws.sendVoiceStateUpdate(this.options.guild.id, this.options.voiceChannel.id, {
+    this.evolava.client.shardConnections.get(0)?.gateway.sendVoiceStateUpdate(this.options.guild.id, this.options.voiceChannel.id, {
         self_deaf: this.options.self!.deaf,
         self_mute: this.options.self!.mute
     });
@@ -233,7 +233,7 @@ export class EvolavaPlayer {
 
 
   public destroy(): void {
-    this.evolava.client.ws.sendVoiceStateUpdate(this.options.guild.id, "")
+    this.evolava.client.shardConnections.get(0)?.gateway.sendVoiceStateUpdate(this.options.guild.id, "")
 
     this.node
       .wsSend({

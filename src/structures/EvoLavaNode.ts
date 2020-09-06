@@ -35,7 +35,7 @@ export class EvoLavaNode {
     public connect() {
         const headers = {
             Authorization: this.node.password, 
-            "Num-Shards": this.evolava.client.ws.launchedShards.size, 
+            "Num-Shards": this.evolava.client.shardConnections.size, 
             "User-Id": this.evolava.client.user.id
         }
         this.ws = new WebSocket(
@@ -105,7 +105,7 @@ export class EvoLavaNode {
                 this.evolava.emit("trackError", track, player, payload);
             } else if(type == "WebsocketClosedEvent") {
                 if ([4009, 4015].includes(code))
-                this.evolava.client.ws.sendVoiceStateUpdate(guildID, player.options.voiceChannel.id, {
+                this.evolava.client.shardConnections.get(0)?.gateway.sendVoiceStateUpdate(guildID, player.options.voiceChannel.id, {
                     self_deaf: player.options.self!.deaf,
                     self_mute: player.options.self!.mute
                 });
@@ -128,19 +128,3 @@ export class EvoLavaNode {
         });
       }
 }
-
-/* 
-        case "WebSocketClosedEvent":
-          if ([4009, 4015].includes(code))
-            this.lavaJS.wsSend({
-              op: 4,
-              d: {
-                guild_id: guildId,
-                channel_id: player.options.voiceChannel.id,
-                self_mute: false,
-                self_deaf: player.options.deafen || false,
-              },
-            });
-          this.lavaJS.emit("socketClosed", this, msg);
-          break;
-*/
