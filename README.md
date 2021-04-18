@@ -16,7 +16,7 @@ npm i @evolvejs/evolava
 ```
 # Basic Startup
 - **After you followed all the steps above, you can now initialize a new EvoLavaClient instance ONLY in Ready Event**
-- **Start the Lavalink CI server by the command java -jar Lavalink.jar in the directory where you installed lavalink, make sure to have a [application.yml](https://github.com/Frederikam/Lavalink/blob/master/LavalinkServer/application.yml.example)**
+- **Start the Lavalink CI server by the command java -jar Lavalink.jar in the directory where you installed lavalink, make sure to have a [application.yml](https://github.com/freyacodes/Lavalink/blob/master/LavalinkServer/application.yml.example)**
 
 # Usage
 ```js
